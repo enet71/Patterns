@@ -1,4 +1,4 @@
 .idea
 Patterns.iml
-target
-out
+target/
+out/
