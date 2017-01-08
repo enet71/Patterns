@@ -1,15 +1,19 @@
-import abstractFactory.AbstractFactory;
-import abstractFactory.factories.AudiFactory;
-import abstractFactory.factories.MercedesFactory;
-import adapter.Adapter;
-import adapter.AdapterComposition;
-import adapter.Playable;
-import observer.Observable_1;
-import observer.Observer;
-import observer.Observer_1;
-import observer.Observer_2;
+import structural.bridge.Car;
+import structural.bridge.NormalDoor;
+import structural.bridge.OffRoadWheel;
+import structural.bridge.PickUp;
+import creational.abstractFactory.AbstractFactory;
+import creational.abstractFactory.factories.AudiFactory;
+import creational.abstractFactory.factories.MercedesFactory;
+import structural.adapter.Adapter;
+import structural.adapter.AdapterComposition;
+import structural.adapter.Playable;
+import behavioral.observer.Observable_1;
+import behavioral.observer.Observer;
+import behavioral.observer.Observer_1;
+import behavioral.observer.Observer_2;
 import org.junit.Test;
-import singleton.Singleton_Enum;
+import creational.singleton.Singleton_Enum;
 
 public class MainTest {
     @Test
@@ -58,5 +62,11 @@ public class MainTest {
         factory_2.createDoor().print();
         factory_2.createSeat().print();
         factory_2.createWheel().print();
+    }
+
+    @Test
+    public void testBridge(){
+        Car car = new PickUp(new NormalDoor(), new OffRoadWheel(),300,5000);
+        System.out.println(car);
     }
 }
