@@ -1,19 +1,23 @@
-import structural.bridge.Car;
-import structural.bridge.NormalDoor;
-import structural.bridge.OffRoadWheel;
-import structural.bridge.PickUp;
-import creational.abstractFactory.AbstractFactory;
-import creational.abstractFactory.factories.AudiFactory;
-import creational.abstractFactory.factories.MercedesFactory;
-import structural.adapter.Adapter;
-import structural.adapter.AdapterComposition;
-import structural.adapter.Playable;
+import behavioral.mediator.Button_1;
+import behavioral.mediator.Button_2;
+import behavioral.mediator.Button_3;
+import behavioral.mediator.Mediator;
 import behavioral.observer.Observable_1;
 import behavioral.observer.Observer;
 import behavioral.observer.Observer_1;
 import behavioral.observer.Observer_2;
-import org.junit.Test;
+import creational.abstractFactory.AbstractFactory;
+import creational.abstractFactory.factories.AudiFactory;
+import creational.abstractFactory.factories.MercedesFactory;
 import creational.singleton.Singleton_Enum;
+import org.junit.Test;
+import structural.adapter.Adapter;
+import structural.adapter.AdapterComposition;
+import structural.adapter.Playable;
+import structural.bridge.Car;
+import structural.bridge.NormalDoor;
+import structural.bridge.OffRoadWheel;
+import structural.bridge.PickUp;
 
 public class MainTest {
     @Test
@@ -68,5 +72,23 @@ public class MainTest {
     public void testBridge(){
         Car car = new PickUp(new NormalDoor(), new OffRoadWheel(),300,5000);
         System.out.println(car);
+    }
+
+    @Test
+    public void testMediator(){
+        Mediator mediator = new Mediator();
+
+        Button_1 button_1 = new Button_1(mediator,"button 1");
+        Button_2 button_2 = new Button_2(mediator,"button 2");
+        Button_3 button_3 = new Button_3(mediator,"button 3");
+
+        mediator.setButton_1(button_1);
+        mediator.setButton_2(button_2);
+        mediator.setButton_3(button_3);
+
+        button_1.clickButton();
+        button_2.clickButton();
+        button_3.clickButton();
+        button_2.clickButton();
     }
 }
